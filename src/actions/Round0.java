@@ -31,6 +31,10 @@ public final class Round0 {
 
             ChosenGift.searchChosenGift(child, input, receivedGifts, allocatedBudget);
 
+            if (receivedGifts.size() == 0 && child.getElf().equals("yellow")) {
+                ChosenGiftByYellowElf.searchChosenGiftByYellowElf(child, input, receivedGifts);
+            }
+
             ChildOutput childOutput = new ChildOutput(child, allocatedBudget, receivedGifts);
             if (child.getAge() < Constants.BABY_MAX_AGE) {
                 childOutput.setAverageScore(Constants.AVERAGE_SCORE_FOR_BABY);

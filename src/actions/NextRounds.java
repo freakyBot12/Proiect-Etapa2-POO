@@ -1,5 +1,7 @@
 package actions;
 
+import factory.SortFactory;
+import factory.SortSantaChildrenList;
 import input.Child;
 import input.ChildUpdate;
 import input.Gift;
@@ -9,6 +11,7 @@ import output.ChildOutputList;
 import output.Output;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,14 +42,36 @@ public final class NextRounds {
             RoundUpdates.checkForYoungAdults(input);
             RoundUpdates.addNewGifts(input, i);
 
-            ChildOutputList childOutputList = new ChildOutputList();
-            for (Child child : input.getInitialData().getChildren()) {
+            List<Child> newChildList = new ArrayList<>(input.getInitialData().getChildren());
+            SortFactory sortFactory = new SortFactory();
+            String strategy = input.getAnnualChanges().get(i).getStrategy();
+            SortSantaChildrenList sortType = sortFactory.getSortType(strategy);
+            List<Child> sortedChildList = sortType.sort(newChildList, niceScoreHistoryMap);
+
+            Map<Integer, List<Gift>> mapWithReceivedGifts = new LinkedHashMap<>();
+
+            for (Child child : sortedChildList) {
                 double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAge(child,
                         niceScoreHistoryMap, input);
 
                 List<Gift> receivedGifts = new ArrayList<>();
 
                 ChosenGift.searchChosenGift(child, input, receivedGifts, allocatedBudget);
+                mapWithReceivedGifts.put(child.getId(), receivedGifts);
+            }
+
+            ChildOutputList childOutputList = new ChildOutputList();
+            for (Child child : input.getInitialData().getChildren()) {
+                double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAge(child,
+                        niceScoreHistoryMap, input);
+
+//                List<Gift> receivedGifts = new ArrayList<>();
+//
+//                ChosenGift.searchChosenGift(child, input, receivedGifts, allocatedBudget);
+                List<Gift> receivedGifts = new ArrayList<>(mapWithReceivedGifts.get(child.getId()));
+                if (receivedGifts.size() == 0 && child.getElf().equals("yellow")) {
+                    ChosenGiftByYellowElf.searchChosenGiftByYellowElf(child, input, receivedGifts);
+                }
                 double averageScore = BudgetCalculator.determineAverageScore(child,
                         niceScoreHistoryMap);
                 List<Double> niceScoreHistory = niceScoreHistoryMap.get(child.getId());
