@@ -1,7 +1,8 @@
 package factory;
 
 public final class SortFactory {
-    /** functia creeaza un obiect care va sorta lista de copii, in functie
+    /**
+     * functia creeaza un obiect care va sorta lista de copii, in functie
      * strategia de asignare a cadourilor, data ca parametru
      */
     public SortSantaChildrenList getSortType(final String strategy) {

@@ -77,21 +77,21 @@ public final class BudgetCalculator {
             AverageNiceScoreStrategy strategy = new BabyAverageNiceScoreStrategy();
             return ElfActions.calculatedBudgetByElf(child,
                     budgetUnit * addNiceScoreBonus(child,
-                    strategy.execute(child, niceScoreHistoryMap)));
+                            strategy.execute(child, niceScoreHistoryMap)));
         }
 
         if (child.getAge() < Constants.KID_MAX_AGE) {
             AverageNiceScoreStrategy strategy = new KidsAverageNiceScoreStrategy();
             return ElfActions.calculatedBudgetByElf(child,
                     budgetUnit * addNiceScoreBonus(child,
-                    strategy.execute(child, niceScoreHistoryMap)));
+                            strategy.execute(child, niceScoreHistoryMap)));
         }
 
         if (child.getAge() <= Constants.TEEN_MAX_AGE) {
             AverageNiceScoreStrategy strategy = new TeenAverageNiceScoreStrategy();
             return ElfActions.calculatedBudgetByElf(child,
                     budgetUnit * addNiceScoreBonus(child,
-                    strategy.execute(child, niceScoreHistoryMap)));
+                            strategy.execute(child, niceScoreHistoryMap)));
         } else {
             return -1;
         }
@@ -119,7 +119,10 @@ public final class BudgetCalculator {
             return -1;
         }
     }
-    /** functie care adauga scorul bonus de cumintenie la averageScore-ul fiecarui copil */
+
+    /**
+     * functie care adauga scorul bonus de cumintenie la averageScore-ul fiecarui copil
+     */
     public static double addNiceScoreBonus(final Child child, final double averageScore) {
         double newBudget = averageScore;
         newBudget += (newBudget * child.getNiceScoreBonus()) / Constants.NICE_SCORE_BONUS_VARIABLE;

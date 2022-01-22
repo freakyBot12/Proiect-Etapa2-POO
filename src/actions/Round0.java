@@ -37,7 +37,7 @@ public final class Round0 {
 
             ChildOutput childOutput = new ChildOutput.Builder(child)
                     .setAverageScore(BudgetCalculator.addNiceScoreBonus(child,
-                child.getNiceScore()))
+                            child.getNiceScore()))
                     .setNiceScoreHistory(List.of(child.getNiceScore()))
                     .setAssignedBudget(allocatedBudget)
                     .setReceivedGifts(receivedGifts)

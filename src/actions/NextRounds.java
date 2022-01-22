@@ -33,8 +33,8 @@ public final class NextRounds {
             for (ChildUpdate childUpdate : input.getAnnualChanges().get(i).getChildrenUpdates()) {
                 for (Child child : input.getInitialData().getChildren()) {
                     int updatedChild = UpdateChild.execute(childUpdate,
-                                                            child,
-                                                            niceScoreHistoryMap);
+                            child,
+                            niceScoreHistoryMap);
                     if (updatedChild == 1) {
                         break;
                     }
@@ -68,11 +68,11 @@ public final class NextRounds {
                         niceScoreHistoryMap, input);
 
                 List<Gift> receivedGifts = new ArrayList<>(mapWithReceivedGifts.
-                                                            get(child.getId()));
+                        get(child.getId()));
                 if (receivedGifts.size() == 0 && child.getElf().equals("yellow")) {
                     ChosenGiftByYellowElf.searchChosenGiftByYellowElf(child,
-                                                                      input,
-                                                                      receivedGifts);
+                            input,
+                            receivedGifts);
                 }
                 double averageScore = BudgetCalculator.determineAverageScore(child,
                         niceScoreHistoryMap);

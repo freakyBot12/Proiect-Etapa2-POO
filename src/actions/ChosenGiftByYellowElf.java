@@ -11,7 +11,8 @@ public final class ChosenGiftByYellowElf {
 
     }
 
-    /** functie care ii atribuie un cadou unui copil care are elful "yellow"
+    /**
+     * functie care ii atribuie un cadou unui copil care are elful "yellow"
      * (doar daca sunt respectate conditiile impuse de elful "yellow")
      */
     public static void searchChosenGiftByYellowElf(final Child child,

@@ -2,6 +2,7 @@ package output;
 
 import input.Child;
 import input.Gift;
+
 import java.util.List;
 
 public final class ChildOutput {
@@ -37,38 +38,49 @@ public final class ChildOutput {
             this.age = child.getAge();
             this.giftsPreferences = child.getGiftsPreferences();
         }
-        /** functie de setare a fieldului "averageScore: */
+
+        /**
+         * functie de setare a fieldului "averageScore:
+         */
         public Builder setAverageScore(final double parameterAverageScore) {
             this.averageScore = parameterAverageScore;
             return this;
         }
 
-        /** functie de setare a fieldului "niceScoreHistory: */
+        /**
+         * functie de setare a fieldului "niceScoreHistory:
+         */
         public Builder setNiceScoreHistory(final List<Double> parameterNiceScoreHistory) {
             this.niceScoreHistory = parameterNiceScoreHistory;
             return this;
         }
 
-        /** functie de setare a fieldului "assignedBudget: */
+        /**
+         * functie de setare a fieldului "assignedBudget:
+         */
         public Builder setAssignedBudget(final double parameterAssignedBudget) {
             this.assignedBudget = parameterAssignedBudget;
             return this;
         }
 
-        /** functie de setare a fieldului "receivedGifts: */
+        /**
+         * functie de setare a fieldului "receivedGifts:
+         */
         public Builder setReceivedGifts(final List<Gift> parameterReceivedGifts) {
             this.receivedGifts = parameterReceivedGifts;
             return this;
         }
 
-        /** functia creeaza o instanta a clasei ChildOutput, care va contine informatiile
+        /**
+         * functia creeaza o instanta a clasei ChildOutput, care va contine informatiile
          * din Builder
-         * */
+         */
         public ChildOutput build() {
             return new ChildOutput(this);
         }
 
     }
+
     private ChildOutput(final Builder builder) {
         this.id = builder.id;
         this.lastName = builder.lastName;
