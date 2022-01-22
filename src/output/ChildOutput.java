@@ -40,7 +40,7 @@ public final class ChildOutput {
         }
 
         /**
-         * functie de setare a fieldului "averageScore:
+         * functie de setare a fieldului "averageScore"
          */
         public Builder setAverageScore(final double parameterAverageScore) {
             this.averageScore = parameterAverageScore;
@@ -48,7 +48,7 @@ public final class ChildOutput {
         }
 
         /**
-         * functie de setare a fieldului "niceScoreHistory:
+         * functie de setare a fieldului "niceScoreHistory"
          */
         public Builder setNiceScoreHistory(final List<Double> parameterNiceScoreHistory) {
             this.niceScoreHistory = parameterNiceScoreHistory;
@@ -56,7 +56,7 @@ public final class ChildOutput {
         }
 
         /**
-         * functie de setare a fieldului "assignedBudget:
+         * functie de setare a fieldului "assignedBudget"
          */
         public Builder setAssignedBudget(final double parameterAssignedBudget) {
             this.assignedBudget = parameterAssignedBudget;
@@ -64,7 +64,7 @@ public final class ChildOutput {
         }
 
         /**
-         * functie de setare a fieldului "receivedGifts:
+         * functie de setare a fieldului "receivedGifts"
          */
         public Builder setReceivedGifts(final List<Gift> parameterReceivedGifts) {
             this.receivedGifts = parameterReceivedGifts;
