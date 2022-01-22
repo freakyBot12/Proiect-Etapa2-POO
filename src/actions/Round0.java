@@ -36,11 +36,11 @@ public final class Round0 {
             }
 
             ChildOutput childOutput = new ChildOutput.Builder(child)
-                    .averageScore(BudgetCalculator.addNiceScoreBonus(child,
+                    .setAverageScore(BudgetCalculator.addNiceScoreBonus(child,
                 child.getNiceScore()))
-                    .niceScoreHistory(List.of(child.getNiceScore()))
-                    .assignedBudget(allocatedBudget)
-                    .receivedGifts(receivedGifts)
+                    .setNiceScoreHistory(List.of(child.getNiceScore()))
+                    .setAssignedBudget(allocatedBudget)
+                    .setReceivedGifts(receivedGifts)
                     .build();
             if (child.getAge() < Constants.BABY_MAX_AGE) {
                 childOutput.setAverageScore(Constants.AVERAGE_SCORE_FOR_BABY);

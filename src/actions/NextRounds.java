@@ -79,10 +79,10 @@ public final class NextRounds {
                 List<Double> niceScoreHistory = niceScoreHistoryMap.get(child.getId());
 
                 ChildOutput childOutput = new ChildOutput.Builder(child)
-                        .averageScore(averageScore)
-                        .niceScoreHistory(new ArrayList<>(niceScoreHistory))
-                        .assignedBudget(allocatedBudget)
-                        .receivedGifts(receivedGifts)
+                        .setAverageScore(averageScore)
+                        .setNiceScoreHistory(new ArrayList<>(niceScoreHistory))
+                        .setAssignedBudget(allocatedBudget)
+                        .setReceivedGifts(receivedGifts)
                         .build();
                 childOutputList.getChildren().add(childOutput);
             }

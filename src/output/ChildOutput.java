@@ -1,10 +1,7 @@
 package output;
 
-import actions.BudgetCalculator;
 import input.Child;
 import input.Gift;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public final class ChildOutput {
@@ -20,19 +17,19 @@ public final class ChildOutput {
     private double assignedBudget;
     private List<Gift> receivedGifts;
 
-    public static class Builder {
-        private int id;
-        private String lastName;
-        private String firstName;
-        private String city;
-        private int age;
-        private List<String> giftsPreferences;
+    public static final class Builder {
+        private final int id;
+        private final String lastName;
+        private final String firstName;
+        private final String city;
+        private final int age;
+        private final List<String> giftsPreferences;
         private double averageScore;
         private List<Double> niceScoreHistory;
         private double assignedBudget;
         private List<Gift> receivedGifts;
 
-        public Builder (Child child) {
+        public Builder(final Child child) {
             this.id = child.getId();
             this.lastName = child.getLastName();
             this.firstName = child.getFirstName();
@@ -40,33 +37,39 @@ public final class ChildOutput {
             this.age = child.getAge();
             this.giftsPreferences = child.getGiftsPreferences();
         }
-
-        public Builder averageScore(double averageScore) {
-            this.averageScore = averageScore;
+        /** functie de setare a fieldului "averageScore: */
+        public Builder setAverageScore(final double parameterAverageScore) {
+            this.averageScore = parameterAverageScore;
             return this;
         }
 
-        public Builder niceScoreHistory(List<Double> niceScoreHistory) {
-            this.niceScoreHistory = niceScoreHistory;
+        /** functie de setare a fieldului "niceScoreHistory: */
+        public Builder setNiceScoreHistory(final List<Double> parameterNiceScoreHistory) {
+            this.niceScoreHistory = parameterNiceScoreHistory;
             return this;
         }
 
-        public Builder assignedBudget(double assignedBudget) {
-            this.assignedBudget = assignedBudget;
+        /** functie de setare a fieldului "assignedBudget: */
+        public Builder setAssignedBudget(final double parameterAssignedBudget) {
+            this.assignedBudget = parameterAssignedBudget;
             return this;
         }
 
-        public Builder receivedGifts(List<Gift> receivedGifts) {
-            this.receivedGifts = receivedGifts;
+        /** functie de setare a fieldului "receivedGifts: */
+        public Builder setReceivedGifts(final List<Gift> parameterReceivedGifts) {
+            this.receivedGifts = parameterReceivedGifts;
             return this;
         }
 
+        /** functia creeaza o instanta a clasei ChildOutput, care va contine informatiile
+         * din Builder
+         * */
         public ChildOutput build() {
             return new ChildOutput(this);
         }
 
     }
-    private ChildOutput(Builder builder) {
+    private ChildOutput(final Builder builder) {
         this.id = builder.id;
         this.lastName = builder.lastName;
         this.firstName = builder.firstName;

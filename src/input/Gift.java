@@ -1,7 +1,5 @@
 package input;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public final class Gift {
@@ -16,7 +14,10 @@ public final class Gift {
 
     }
 
-    public Gift(String productName, double price, String category, int quantity) {
+    public Gift(final String productName,
+                final double price,
+                final String category,
+                final int quantity) {
         this.productName = productName;
         this.price = price;
         this.category = category;
@@ -51,7 +52,7 @@ public final class Gift {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(final int quantity) {
         this.quantity = quantity;
     }
 }

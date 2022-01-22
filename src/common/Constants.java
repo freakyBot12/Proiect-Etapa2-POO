@@ -14,6 +14,10 @@ public final class Constants {
     public static final double AVERAGE_SCORE_FOR_BABY = 10;
     public static final int KID_MAX_AGE = 12;
     public static final int TEEN_MAX_AGE = 18;
+    public static final int NICE_SCORE_BONUS_VARIABLE = 100;
+    public static final int MAX_NICE_SCORE = 10;
+    public static final int PERCENT = 30;
+    public static final int BUDGET_MODIFICATION_VARIABLE = 100;
 
     private Constants() {
         //constructor for checkstyle

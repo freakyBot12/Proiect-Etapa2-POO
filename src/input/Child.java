@@ -94,7 +94,7 @@ public final class Child {
         return niceScoreBonus;
     }
 
-    public void setNiceScoreBonus(double niceScoreBonus) {
+    public void setNiceScoreBonus(final double niceScoreBonus) {
         this.niceScoreBonus = niceScoreBonus;
     }
 
@@ -102,7 +102,7 @@ public final class Child {
         return elf;
     }
 
-    public void setElf(String elf) {
+    public void setElf(final String elf) {
         this.elf = elf;
     }
 }

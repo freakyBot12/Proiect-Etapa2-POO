@@ -46,7 +46,8 @@ public final class BudgetCalculator {
      */
 
     public static double determineBudgetBasedOnAge(final Child child,
-                                                   final Map<Integer, List<Double>> niceScoreHistoryMap,
+                                                   final Map<Integer,
+                                                           List<Double>> niceScoreHistoryMap,
                                                    final Input input) {
 
         double sumOfAllAverageScores = 0;
@@ -101,7 +102,8 @@ public final class BudgetCalculator {
      * functie care determina averageScore-ul unui copil
      */
     public static double determineAverageScore(final Child child,
-                                               final Map<Integer, List<Double>> niceScoreHistoryMap) {
+                                               final Map<Integer,
+                                                       List<Double>> niceScoreHistoryMap) {
         if (child.getAge() < Constants.BABY_MAX_AGE) {
             AverageNiceScoreStrategy strategy = new BabyAverageNiceScoreStrategy();
             return addNiceScoreBonus(child, strategy.execute(child, niceScoreHistoryMap));
@@ -117,11 +119,11 @@ public final class BudgetCalculator {
             return -1;
         }
     }
-
+    /** functie care adauga scorul bonus de cumintenie la averageScore-ul fiecarui copil */
     public static double addNiceScoreBonus(final Child child, final double averageScore) {
         double newBudget = averageScore;
-        newBudget += (newBudget * child.getNiceScoreBonus()) / 100;
-        return Math.min(newBudget, 10);
+        newBudget += (newBudget * child.getNiceScoreBonus()) / Constants.NICE_SCORE_BONUS_VARIABLE;
+        return Math.min(newBudget, Constants.MAX_NICE_SCORE);
     }
 
 }

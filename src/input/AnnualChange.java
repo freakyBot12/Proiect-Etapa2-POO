@@ -60,7 +60,7 @@ public final class AnnualChange {
         return strategy;
     }
 
-    public void setStrategy(String strategy) {
+    public void setStrategy(final String strategy) {
         this.strategy = strategy;
     }
 }

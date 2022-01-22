@@ -18,7 +18,8 @@ public final class UpdateChild {
      */
     public static void updateNiceScoreHistory(final ChildUpdate childUpdate,
                                               final Child child,
-                                              final Map<Integer, List<Double>> niceScoreHistoryMap) {
+                                              final Map<Integer,
+                                                      List<Double>> niceScoreHistoryMap) {
         if (childUpdate.getNiceScore() != null) {
             List<Double> niceScoreHistory = niceScoreHistoryMap.get(child.getId());
             niceScoreHistory.add(childUpdate.getNiceScore());

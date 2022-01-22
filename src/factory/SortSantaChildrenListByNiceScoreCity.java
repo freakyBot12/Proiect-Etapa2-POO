@@ -3,12 +3,18 @@ package factory;
 import actions.BudgetCalculator;
 import input.Child;
 
-import java.util.*;
+
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class SortSantaChildrenListByNiceScoreCity implements SortSantaChildrenList{
+public final class SortSantaChildrenListByNiceScoreCity implements SortSantaChildrenList {
     @Override
-    public List<Child> sort(List<Child> children, Map<Integer, List<Double>> niceScoreHistoryMap) {
+    public List<Child> sort(final List<Child> children,
+                            final Map<Integer, List<Double>> niceScoreHistoryMap) {
         children.sort(Comparator.comparingInt(Child::getId));
         Map<String, List<Child>> groupedChildrenByCity = children
                 .stream()

@@ -6,7 +6,14 @@ import input.Input;
 
 import java.util.List;
 
-public class ChosenGiftByYellowElf {
+public final class ChosenGiftByYellowElf {
+    private ChosenGiftByYellowElf() {
+
+    }
+
+    /** functie care ii atribuie un cadou unui copil care are elful "yellow"
+     * (doar daca sunt respectate conditiile impuse de elful "yellow")
+     */
     public static void searchChosenGiftByYellowElf(final Child child,
                                                    final Input input,
                                                    final List<Gift> receivedGifts) {
