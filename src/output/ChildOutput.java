@@ -20,36 +20,63 @@ public final class ChildOutput {
     private double assignedBudget;
     private List<Gift> receivedGifts;
 
-    public ChildOutput(final Child child) {
-        this.id = child.getId();
-        this.lastName = child.getLastName();
-        this.firstName = child.getFirstName();
-        this.city = child.getCity();
-        this.age = child.getAge();
-        this.giftsPreferences = child.getGiftsPreferences();
-    }
+    public static class Builder {
+        private int id;
+        private String lastName;
+        private String firstName;
+        private String city;
+        private int age;
+        private List<String> giftsPreferences;
+        private double averageScore;
+        private List<Double> niceScoreHistory;
+        private double assignedBudget;
+        private List<Gift> receivedGifts;
 
-    public ChildOutput(final Child child,
-                       final double assignedBudget,
-                       final List<Gift> receivedGifts) {
-        this(child);
-        this.averageScore = BudgetCalculator.addNiceScoreBonus(child,
-                child.getNiceScore());
-        this.niceScoreHistory = List.of(child.getNiceScore());
-        this.assignedBudget = assignedBudget;
-        this.receivedGifts = receivedGifts;
-    }
+        public Builder (Child child) {
+            this.id = child.getId();
+            this.lastName = child.getLastName();
+            this.firstName = child.getFirstName();
+            this.city = child.getCity();
+            this.age = child.getAge();
+            this.giftsPreferences = child.getGiftsPreferences();
+        }
 
-    public ChildOutput(final Child child,
-                       final double averageScore,
-                       final List<Double> niceScoreHistory,
-                       final double assignedBudget,
-                       final List<Gift> receivedGifts) {
-        this(child);
-        this.averageScore = averageScore;
-        this.niceScoreHistory = new ArrayList<>(niceScoreHistory);
-        this.assignedBudget = assignedBudget;
-        this.receivedGifts = receivedGifts;
+        public Builder averageScore(double averageScore) {
+            this.averageScore = averageScore;
+            return this;
+        }
+
+        public Builder niceScoreHistory(List<Double> niceScoreHistory) {
+            this.niceScoreHistory = niceScoreHistory;
+            return this;
+        }
+
+        public Builder assignedBudget(double assignedBudget) {
+            this.assignedBudget = assignedBudget;
+            return this;
+        }
+
+        public Builder receivedGifts(List<Gift> receivedGifts) {
+            this.receivedGifts = receivedGifts;
+            return this;
+        }
+
+        public ChildOutput build() {
+            return new ChildOutput(this);
+        }
+
+    }
+    private ChildOutput(Builder builder) {
+        this.id = builder.id;
+        this.lastName = builder.lastName;
+        this.firstName = builder.firstName;
+        this.city = builder.city;
+        this.age = builder.age;
+        this.giftsPreferences = builder.giftsPreferences;
+        this.averageScore = builder.averageScore;
+        this.niceScoreHistory = builder.niceScoreHistory;
+        this.assignedBudget = builder.assignedBudget;
+        this.receivedGifts = builder.receivedGifts;
     }
 
     public int getId() {

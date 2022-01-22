@@ -35,7 +35,13 @@ public final class Round0 {
                 ChosenGiftByYellowElf.searchChosenGiftByYellowElf(child, input, receivedGifts);
             }
 
-            ChildOutput childOutput = new ChildOutput(child, allocatedBudget, receivedGifts);
+            ChildOutput childOutput = new ChildOutput.Builder(child)
+                    .averageScore(BudgetCalculator.addNiceScoreBonus(child,
+                child.getNiceScore()))
+                    .niceScoreHistory(List.of(child.getNiceScore()))
+                    .assignedBudget(allocatedBudget)
+                    .receivedGifts(receivedGifts)
+                    .build();
             if (child.getAge() < Constants.BABY_MAX_AGE) {
                 childOutput.setAverageScore(Constants.AVERAGE_SCORE_FOR_BABY);
             }

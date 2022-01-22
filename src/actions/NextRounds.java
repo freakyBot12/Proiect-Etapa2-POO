@@ -32,7 +32,9 @@ public final class NextRounds {
             RoundUpdates.updateSantaBudget(input, i);
             for (ChildUpdate childUpdate : input.getAnnualChanges().get(i).getChildrenUpdates()) {
                 for (Child child : input.getInitialData().getChildren()) {
-                    int updatedChild = UpdateChild.execute(childUpdate, child, niceScoreHistoryMap);
+                    int updatedChild = UpdateChild.execute(childUpdate,
+                                                            child,
+                                                            niceScoreHistoryMap);
                     if (updatedChild == 1) {
                         break;
                     }
@@ -65,18 +67,23 @@ public final class NextRounds {
                 double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAge(child,
                         niceScoreHistoryMap, input);
 
-//                List<Gift> receivedGifts = new ArrayList<>();
-//
-//                ChosenGift.searchChosenGift(child, input, receivedGifts, allocatedBudget);
-                List<Gift> receivedGifts = new ArrayList<>(mapWithReceivedGifts.get(child.getId()));
+                List<Gift> receivedGifts = new ArrayList<>(mapWithReceivedGifts.
+                                                            get(child.getId()));
                 if (receivedGifts.size() == 0 && child.getElf().equals("yellow")) {
-                    ChosenGiftByYellowElf.searchChosenGiftByYellowElf(child, input, receivedGifts);
+                    ChosenGiftByYellowElf.searchChosenGiftByYellowElf(child,
+                                                                      input,
+                                                                      receivedGifts);
                 }
                 double averageScore = BudgetCalculator.determineAverageScore(child,
                         niceScoreHistoryMap);
                 List<Double> niceScoreHistory = niceScoreHistoryMap.get(child.getId());
-                ChildOutput childOutput = new ChildOutput(child, averageScore, niceScoreHistory,
-                        allocatedBudget, receivedGifts);
+
+                ChildOutput childOutput = new ChildOutput.Builder(child)
+                        .averageScore(averageScore)
+                        .niceScoreHistory(new ArrayList<>(niceScoreHistory))
+                        .assignedBudget(allocatedBudget)
+                        .receivedGifts(receivedGifts)
+                        .build();
                 childOutputList.getChildren().add(childOutput);
             }
             output.getAnnualChildren().add(childOutputList);
