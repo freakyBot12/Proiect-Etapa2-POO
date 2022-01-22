@@ -47,13 +47,13 @@ public final class NextRounds {
             List<Child> newChildList = new ArrayList<>(input.getInitialData().getChildren());
             SortFactory sortFactory = new SortFactory();
             String strategy = input.getAnnualChanges().get(i).getStrategy();
-            SortSantaChildrenList sortType = sortFactory.getSortType(strategy);
-            List<Child> sortedChildList = sortType.sort(newChildList, niceScoreHistoryMap);
+            SortSantaChildrenList sorter = sortFactory.getSorter(strategy);
+            List<Child> sortedChildList = sorter.sort(newChildList, niceScoreHistoryMap);
 
             Map<Integer, List<Gift>> mapWithReceivedGifts = new LinkedHashMap<>();
 
             for (Child child : sortedChildList) {
-                double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAge(child,
+                double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAgeAndElfs(child,
                         niceScoreHistoryMap, input);
 
                 List<Gift> receivedGifts = new ArrayList<>();
@@ -64,7 +64,7 @@ public final class NextRounds {
 
             ChildOutputList childOutputList = new ChildOutputList();
             for (Child child : input.getInitialData().getChildren()) {
-                double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAge(child,
+                double allocatedBudget = BudgetCalculator.determineBudgetBasedOnAgeAndElfs(child,
                         niceScoreHistoryMap, input);
 
                 List<Gift> receivedGifts = new ArrayList<>(mapWithReceivedGifts.

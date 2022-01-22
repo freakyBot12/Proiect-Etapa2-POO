@@ -5,7 +5,7 @@ public final class SortFactory {
      * functia creeaza un obiect care va sorta lista de copii, in functie
      * strategia de asignare a cadourilor, data ca parametru
      */
-    public SortSantaChildrenList getSortType(final String strategy) {
+    public SortSantaChildrenList getSorter(final String strategy) {
         if (strategy.equals("id")) {
             return new SortSantaChildrenListById();
         }

@@ -1,0 +1,55 @@
+Selea Tudor Octavian - 322CA - Proiect POO 2022 - Etapa 2
+
+   Majoritatea claselor au fost preluate din implementarea etapei 1.
+
+Modificari aduse claselor preluate din implementarea etapei 1:
+
+	- Child:
+		- au fost adaugate field-urile "niceScoreBonus" si "elf"
+
+	- ChildUpdate:
+		- a fost adaugat field-ul "elf"
+
+	- Gift:
+		- a fost adaugat field-ul "quantity", care este ignorat in momentul scrierii
+		  datelor din Output in fisiere cu format JSON
+
+	- AnnualChange:
+		- a fost adaugat field-ul "strategy"
+
+	- ChildOutput:
+		- instantierea unei clase ChildOutput se face folosind design pattern-ul
+		  Builder, care inlocuieste, astfel, cei 3 constructori destul de aglomerati,
+		  continuti de ChildOutput la etapa 1
+
+	- BudgetCalculator:
+		- functiile au fost modificate astfel incat sa calculeze bugetul unui copil
+		  in functie de averageScore, scorul de cumintenie bonus (care se adauga la
+		  averageScore) si elful fiecarui copil (elfii "white" si "yellow" nu 
+		  influenteaza bugetul)
+
+	- NextRounds:
+		- inainte de atribuirea cadourilor este creata o lista care va contine toti
+		  copiii din lista mosului, sortati in functie de strategia de asignare a
+		  cadourilor data in input. Copiii vor primi cadouri in ordinea din lista
+		  precizata mai sus, dar vor fi adaugati in Output in ordinea din lista
+		  "oficiala" a mosului (input.getInitialData().getChildren())
+	- Round0:
+		- se acorda, daca este cazul, un cadou fiecarui copil cu elf "yellow"
+		  (acelasi lucru se intampla si in cazul clasei NextRounds)
+
+Clase noi:
+	
+	- ChosenGiftByYellowElf:
+		- atribuie un cadou copilului cu elf "yellow" daca sunt respectate
+		  conditiile impuse de elf
+
+	- ElfActions:
+		- contine functii care modifica bugetul alocat unui copil in functie de
+		  elful pe care il are (pentru elfii "yellow" si "white", bugetul nu este
+		  modificat)
+
+	- clasele continute de pachetul factory sorteaza lista de copii in functie de
+	  strategia de asignare a cadourilor data in input.
+	- obiectele care se ocupa de sortarea copiilor sunt create folosind design
+	  pattern-ul Factory

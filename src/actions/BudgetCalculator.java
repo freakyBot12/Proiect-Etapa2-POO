@@ -45,10 +45,10 @@ public final class BudgetCalculator {
      * (folosita pentru toate rundele in afara de runda 0
      */
 
-    public static double determineBudgetBasedOnAge(final Child child,
-                                                   final Map<Integer,
+    public static double determineBudgetBasedOnAgeAndElfs(final Child child,
+                                                          final Map<Integer,
                                                            List<Double>> niceScoreHistoryMap,
-                                                   final Input input) {
+                                                          final Input input) {
 
         double sumOfAllAverageScores = 0;
         for (Child child1 : input.getInitialData().getChildren()) {
